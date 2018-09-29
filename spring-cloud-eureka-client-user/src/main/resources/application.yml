@@ -1,0 +1,16 @@
+server: 
+  port: 5221
+  
+spring: 
+  application: 
+    name: user-server
+  datasource:  
+    url: jdbc:mysql://localhost:3306/distributed_transaction
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root   
+eureka:
+  client:
+    serviceUrl:
+      #注册中心的地址
+      defaultZone: http://localhost:5220/eureka/
