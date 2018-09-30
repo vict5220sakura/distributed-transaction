@@ -6,6 +6,8 @@
  */
 package com.vict5220.service;
 
+import org.springframework.transaction.annotation.Transactional;
+
 /**
  * @Description 
  * @author   WangWei
@@ -22,5 +24,12 @@ public interface UserService {
 	 * @param password void
 	 * @date 2018年9月29日 下午4:59:17
 	 */
-	void userRegister(String username, String password);
+	@Transactional
+	void userRegist(String username, String password);
+	
+	@Transactional
+	void userRegistCancel(String username, String password);
+	
+	@Transactional
+	void userRegistConfirm(String username, String password);
 }

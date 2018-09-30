@@ -17,5 +17,5 @@ import com.vict5220.entity.Wallet;
  * @version  V 1.0
  */
 public interface WalletDao extends JpaRepository<Wallet, Integer>{
-	
+	Wallet findByUsername(String username);
 }

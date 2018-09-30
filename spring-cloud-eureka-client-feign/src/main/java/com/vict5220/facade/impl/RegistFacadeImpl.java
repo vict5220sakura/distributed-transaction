@@ -6,6 +6,8 @@
  */
 package com.vict5220.facade.impl;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +21,7 @@ import com.vict5220.feign.WalletServer;
  * @date     2018年9月29日 下午5:14:42
  * @version  V 1.0
  */
-@Service
+@Service("registFacade")
 public class RegistFacadeImpl implements RegistFacade {
 
 	@Autowired
@@ -39,13 +41,10 @@ public class RegistFacadeImpl implements RegistFacade {
 	 * @see com.vict5220.facade.RegisterFacade#regist(java.lang.String, java.lang.String, java.lang.String, java.lang.String)  
 	 */
 	@Override
+	@Transactional
 	public String regist(String username, String password, String walletName, String walletPwd) {
-		String createUserFlag = userServer.createUser(username, password);
-		String createWalletFlag = walletServer.createWallet(username, walletName, walletPwd);
-		String fail = "FAIL";
-		if(fail.equals(createUserFlag) || fail.equals(createWalletFlag)){
-			return "FAIL";
-		}
+		userServer.createUser(username, password);
+		walletServer.createWallet(username, walletName, walletPwd);
 		return "SUCCESS";
 	}
 

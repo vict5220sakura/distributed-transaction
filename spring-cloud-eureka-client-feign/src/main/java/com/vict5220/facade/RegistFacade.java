@@ -6,6 +6,8 @@
  */
 package com.vict5220.facade;
 
+import org.springframework.transaction.annotation.Transactional;
+
 /**
  * @Description 
  * @author   WangWei
@@ -13,5 +15,7 @@ package com.vict5220.facade;
  * @version  V 1.0
  */
 public interface RegistFacade {
+	
+	@Transactional
 	String regist(String username, String password, String walletName, String walletPwd);
 }

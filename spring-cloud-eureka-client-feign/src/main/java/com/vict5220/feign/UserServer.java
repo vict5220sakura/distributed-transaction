@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(value = "user-server")
 public interface UserServer {
 	@PostMapping("create_user")
-	public String createUser(
+	public void createUser(
 			@RequestParam("username") String username, 
 			@RequestParam("password") String password);
 }

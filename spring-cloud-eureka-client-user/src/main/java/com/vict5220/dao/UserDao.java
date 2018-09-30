@@ -17,5 +17,5 @@ import com.vict5220.entity.User;
  * @version  V 1.0
  */
 public interface UserDao extends JpaRepository<User, Integer>{
-	
+	User findByUsername(String username);
 }

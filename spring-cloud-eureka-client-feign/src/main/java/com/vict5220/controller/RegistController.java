@@ -6,7 +6,10 @@
  */
 package com.vict5220.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
+
+import org.bytesoft.compensable.Compensable;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,12 +23,14 @@ import com.vict5220.facade.RegistFacade;
  * @version  V 1.0
  */
 @RestController
+//@Compensable(interfaceClass = RegistFacade.class)
 public class RegistController {
 	
-	@Autowired
+	@Resource(name = "registFacade")
 	private RegistFacade registFacade;
 	
 	@PostMapping("regist")
+	@Transactional
 	public String regist(
 			@RequestParam("username") String username, 
 			@RequestParam("password") String password, 

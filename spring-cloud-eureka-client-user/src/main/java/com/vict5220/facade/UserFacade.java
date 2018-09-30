@@ -6,6 +6,8 @@
  */
 package com.vict5220.facade;
 
+import org.springframework.transaction.annotation.Transactional;
+
 /**
  * @Description 
  * @author   WangWei
@@ -23,5 +25,6 @@ public interface UserFacade {
 	 * @return String
 	 * @date 2018年9月29日 下午5:04:59
 	 */
-	String createUser(String username, String password);
+	@Transactional
+	void createUser(String username, String password);
 }

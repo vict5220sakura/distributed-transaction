@@ -6,13 +6,13 @@
  */
 package com.vict5220.facade.impl;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.vict5220.facade.UserFacade;
 import com.vict5220.service.UserService;
-
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * @Description 
@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
  * @date     2018年9月29日 下午4:49:10
  * @version  V 1.0
  */
-@Service
+@Service("userFacade")
 public class UserFacadeImpl implements UserFacade {
 
 	@Autowired
@@ -34,16 +34,12 @@ public class UserFacadeImpl implements UserFacade {
 	 * @param walletName
 	 * @param walletPwd
 	 * @return
-	 * @see com.vict5220.facade.UserFacade#createUser(java.lang.String, java.lang.String, java.lang.String, java.lang.String)  
+	 * @see com.vict5220.facade.IUserFacade#createUser(java.lang.String, java.lang.String, java.lang.String, java.lang.String)  
 	 */
 	@Override
-	public String createUser(String username, String password) {
-		try {
-			userService.userRegister(username, password);
-		} catch (Exception e) {
-			return "FAIL";
-		}
-		return "SUCCESS";
+	@Transactional
+	public void createUser(String username, String password) {
+		userService.userRegist(username, password);
 	}
 
 }

@@ -6,6 +6,8 @@
  */
 package com.vict5220.facade;
 
+import org.springframework.transaction.annotation.Transactional;
+
 /**
  * @Description 
  * @author   WangWei
@@ -13,5 +15,6 @@ package com.vict5220.facade;
  * @version  V 1.0
  */
 public interface WalletFacade {
-	String insert(String username, String walletName, String password);
+	@Transactional
+	void createWallet(String username, String walletName, String password);
 }

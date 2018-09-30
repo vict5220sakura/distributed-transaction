@@ -6,6 +6,8 @@
  */
 package com.vict5220.service;
 
+import org.springframework.transaction.annotation.Transactional;
+
 /**
  * @Description 
  * @author   WangWei
@@ -13,5 +15,13 @@ package com.vict5220.service;
  * @version  V 1.0
  */
 public interface WalletService {
-	void insert(String username, String walletName, String password);
+	
+	@Transactional
+	void createWallet(String username, String walletName, String password);
+	
+	@Transactional
+	void createWalletConfirm(String username, String walletName, String password);
+	
+	@Transactional
+	void createWalletCancel(String username, String walletName, String password);
 }

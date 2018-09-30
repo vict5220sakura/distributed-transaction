@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(value = "wallet-server")
 public interface WalletServer {
 	@PostMapping("create_wallet")
-	public String createWallet(
+	public void createWallet(
 			@RequestParam("username") String username, 
 			@RequestParam("wallet_name") String walletName, 
 			@RequestParam("password") String password);
